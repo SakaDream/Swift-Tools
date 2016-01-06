@@ -12,13 +12,12 @@ def check_workspace():
 		os.system("mkdir ~/swift/workspace")
 
 def run_command(n):
-	os.chdir(os.path.expanduser("~") + '/swift/workspace')
 	print("Making " + n + " project folder...")
-	os.system("mkdir " + n)
+	os.system("mkdir ~/swift/workspace/" + n)
 	print("Making Package.swift...")
-	os.system("touch Package.swift")
+	os.system("touch ~/swift/workspace/" + n + "/Package.swift")
 	print("Making Sources folder...")
-	os.system("mkdir " + n + "/Sources")
+	os.system("mkdir ~/swift/workspace/" + n + "/Sources")
 	print("Making main.swift...")
 	os.system("touch ~/swift/workspace/" + n + "/Sources/main.swift")
 	print("Openning main.swift...")

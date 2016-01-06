@@ -2,7 +2,7 @@
 import os, sys, os.path
 
 def help():
-	print("To create a Swift package, please command: python swift.py <your_project_name>")
+	print("To create a Swift package, please command: ./swift.py <your_project_name>")
 
 def check_workspace():
 	if os.path.isdir(os.path.expanduser("~") + '/swift/workspace') == True:

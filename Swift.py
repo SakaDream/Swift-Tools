@@ -2,7 +2,8 @@
 import os, sys, os.path
 
 def help():
-	print("To create a Swift package, please command: ./swift.py <your_project_name>")
+	print("To create or open a Swift package, please command: ./swift.py <your_project_name> \n")
+	print("To see your projects as a list, please command: ./swift.py ls")
 
 def check_workspace():
 	if os.path.isdir(os.path.expanduser("~") + '/swift/workspace') == True:
@@ -11,7 +12,7 @@ def check_workspace():
 		print("Workspace is not exists. Making workspace...")
 		os.system("mkdir ~/swift/workspace")
 
-def run_command(n):
+def create_project(n):
 	print("Making " + n + " project folder...")
 	os.system("mkdir ~/swift/workspace/" + n)
 	print("Making Package.swift...")
@@ -23,14 +24,25 @@ def run_command(n):
 	print("Openning main.swift...")
 	os.system("gedit ~/swift/workspace/" + n + "/Sources/main.swift")
 
+def open_project(n):
+	print("Openning project...")
+	os.system("gedit ~/swift/workspace/" + n + "/Sources/main.swift")
+
+def list_projects():
+	print("List of projects:\n")
+	os.system("cd ~/swift/workspace")
+	os.system("ls")
+
 if len(sys.argv) == 1:
 	help()
 
 if len(sys.argv) == 2:
-	check_workspace()
-	os.chdir(os.path.expanduser("~") + '/swift/workspace')
-	if os.path.isdir(sys.argv[1]) == True:
-		print("This project is already exists. Please enter other name.")
-		exit()
-	else:	
-		run_command(sys.argv[1])
+	if sys.argv[1] == "ls":
+		list_projects()
+	else:
+		check_workspace()
+		os.chdir(os.path.expanduser("~") + '/swift/workspace')
+		if os.path.isdir(sys.argv[1]) == True:
+			open_project(sys.argv[1])
+		else:
+			create_project(sys.argv[1])

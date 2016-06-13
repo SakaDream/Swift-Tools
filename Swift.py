@@ -2,8 +2,9 @@
 import os, sys, os.path
 
 def help():
-	print("To create or open a Swift package, please command: ./swift.py <your_project_name>\n")
+	print("To create or open a Swift package, please command: ./swift.py <your_project_name>")
 	print("To see your projects as a list, please command: ./swift.py ls")
+	print("To remove a project, please command: ./swift.py rm <your_project_name>")
 
 def check_workspace():
 	if os.path.isdir(os.path.expanduser("~") + '/swift/workspace') == True:
